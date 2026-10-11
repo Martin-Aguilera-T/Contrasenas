@@ -72,6 +72,53 @@ public class UsuarioDAO {
             return false;
         }
     }
+    // Eliminar un usuario por su userId
+    public boolean eliminarUsuario(String userId) {
+        String sql = "delete from usuarios where userId = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, userId);
+            return pstmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    // Modificar datos de un usuario
+    public boolean modificarUsuario(Usuario u) {
+        String sql = "update usuarios set firstName = ?, lastName = ?, emailAddress = ?, userStatus = ?, role = ?, " +
+                "curp = ?, rfc = ?, specialty = ?, notes = ?, " +
+                "phoneEncrypted = aes_encrypt(?, ?), " +
+                "addressEncrypted = aes_encrypt(?, ?), " +
+                "salaryEncrypted = aes_encrypt(?, ?) " +
+                "where userId = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, u.getFirstName());
+            pstmt.setString(2, u.getLastName());
+            pstmt.setString(3, u.getEmailAddress());
+            pstmt.setString(4, u.getUserStatus());
+            pstmt.setString(5, u.getRole());
+            pstmt.setString(6, u.getCurp());
+            pstmt.setString(7, u.getRfc());
+            pstmt.setString(8, u.getSpecialty());
+            pstmt.setString(9, u.getNotes());
+
+            pstmt.setString(10, u.getPhone());
+            pstmt.setString(11, DatabaseConnection.getAesKey());
+            pstmt.setString(12, u.getAddress());
+            pstmt.setString(13, DatabaseConnection.getAesKey());
+            pstmt.setString(14, u.getSalary());
+            pstmt.setString(15, DatabaseConnection.getAesKey());
+
+            pstmt.setString(16, u.getUserId());
+            return pstmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
     // Consultar lista de usuarios diferenciando si es Jefe o Empleado
     public List<Usuario> listarUsuarios(boolean esJefe) {

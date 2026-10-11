@@ -68,4 +68,29 @@ public class RegisterController {
         txtRfc.clear(); txtSpecialty.clear(); txtPhone.clear();
         txtAddress.clear(); txtSalary.clear(); txtNotes.clear();
     }
+    private boolean validarCampos() {
+        // Validar correo electrónico
+        if (!txtEmail.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+            lblMensaje.setText("El formato del correo es inválido.");
+            return false;
+        }
+        // Validar teléfono (ej. 10 dígitos numéricos)
+        if (!txtPhone.getText().matches("\\d{10}")) {
+            lblMensaje.setText("El teléfono debe contener exactamente 10 dígitos.");
+            return false;
+        }
+        // Validar sueldo numérico
+        try {
+            Double.parseDouble(txtSalary.getText());
+        } catch (NumberFormatException e) {
+            lblMensaje.setText("El sueldo debe ser un valor numérico.");
+            return false;
+        }
+        // Validar longitud del UserId
+        if (txtUserId.getText().length() > 50) {
+            lblMensaje.setText("El User ID no puede exceder los 50 caracteres.");
+            return false;
+        }
+        return true;
+    }
 }
