@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.contrasenas.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<VBox alignment="CENTER" spacing="15.0" style="-fx-background-color: #2b3e50; -fx-padding: 30;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.contrasenas.controller.LoginController">
+    <children>
+        <Label text="Login to our site" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="22.0" />
+            </font>
+        </Label>
+        <Label text="Enter username and password to log on" textFill="#b0bec5" />
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
+        <TextField fx:id="txtUsername" promptText="Username..." style="-fx-pref-height: 35; -fx-background-radius: 5;" />
+        <PasswordField fx:id="txtPassword" promptText="Password..." style="-fx-pref-height: 35; -fx-background-radius: 5;" />
+
+        <Button fx:id="btnLogin" onAction="#handleLogin" prefWidth="250.0" style="-fx-background-color: #00a8cc; -fx-text-fill: white; -fx-font-weight: bold; -fx-pref-height: 40; -fx-cursor: hand;" text="Sign in!" />
+
+        <Label fx:id="lblError" textFill="#ff5252" />
+    </children>
 </VBox>

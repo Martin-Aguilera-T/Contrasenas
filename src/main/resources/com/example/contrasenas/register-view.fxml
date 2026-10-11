@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane fitToWidth="true" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.contrasenas.controller.RegisterController">
+    <content>
+        <VBox alignment="TOP_CENTER" spacing="12.0" style="-fx-padding: 25; -fx-background-color: #2b3e50;">
+            <children>
+                <Label text="Sign up now" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                </Label>
+                <Label text="Fill in the form below to get instant access:" textFill="#b0bec5" />
+
+                <GridPane hgap="10" vgap="10">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="50" />
+                        <ColumnConstraints percentWidth="50" />
+                    </columnConstraints>
+
+                    <children>
+                        <TextField fx:id="txtUserId" promptText="User ID / Username..." GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <PasswordField fx:id="txtPassword" promptText="Password..." GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                        <TextField fx:id="txtFirstName" promptText="First Name..." GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                        <TextField fx:id="txtLastName" promptText="Last Name..." GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                        <TextField fx:id="txtEmail" promptText="Email Address..." GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                        <ComboBox fx:id="cmbRole" promptText="Seleccionar Rol" GridPane.columnIndex="1" GridPane.rowIndex="2" prefWidth="300" />
+
+                        <TextField fx:id="txtCurp" promptText="CURP..." GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                        <TextField fx:id="txtRfc" promptText="RFC..." GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                        <TextField fx:id="txtSpecialty" promptText="Especialidad (Puesto)..." GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                        <ComboBox fx:id="cmbStatus" promptText="Estado del Usuario" GridPane.columnIndex="1" GridPane.rowIndex="4" prefWidth="300" />
+
+                        <TextField fx:id="txtPhone" promptText="Teléfono (Datos Cifrados)..." GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                        <TextField fx:id="txtAddress" promptText="Dirección (Datos Cifrados)..." GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+                        <TextField fx:id="txtSalary" promptText="Sueldo (Datos Cifrados)..." GridPane.columnIndex="0" GridPane.rowIndex="6" />
+                        <TextArea fx:id="txtNotes" promptText="Notas / About yourself..." prefHeight="60" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                    </children>
+                </GridPane>
+
+                <Button onAction="#handleRegistrar" prefWidth="250.0" style="-fx-background-color: #00a8cc; -fx-text-fill: white; -fx-font-weight: bold; -fx-pref-height: 38; -fx-cursor: hand;" text="Sign me up!" />
+                <Label fx:id="lblMensaje" textFill="WHITE" />
+            </children>
+        </VBox>
+    </content>
+</ScrollPane>

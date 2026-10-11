@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="10.0" style="-fx-padding: 15; -fx-background-color: #f8f9fa;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.contrasenas.controller.UserListController">
+    <children>
+        <Label text="User Listing Report" textFill="#333333">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+
+        <TableView fx:id="tblUsuarios" prefHeight="450.0" prefWidth="850.0">
+            <columns>
+                <TableColumn fx:id="colUserId" prefWidth="100.0" text="USER ID" />
+                <TableColumn fx:id="colFirstName" prefWidth="100.0" text="FIRST NAME" />
+                <TableColumn fx:id="colLastName" prefWidth="100.0" text="LAST NAME" />
+                <TableColumn fx:id="colEmail" prefWidth="150.0" text="EMAIL ADDRESS" />
+                <TableColumn fx:id="colStatus" prefWidth="80.0" text="USER STATUS" />
+                <TableColumn fx:id="colRole" prefWidth="80.0" text="ROLE" />
+                <TableColumn fx:id="colDate" prefWidth="100.0" text="CREATED DATE" />
+                <TableColumn fx:id="colPhone" prefWidth="110.0" text="TELÉFONO" />
+                <TableColumn fx:id="colAddress" prefWidth="120.0" text="DIRECCIÓN" />
+                <TableColumn fx:id="colSalary" prefWidth="90.0" text="SUELDO" />
+            </columns>
+        </TableView>
+    </children>
+</VBox>
