@@ -2,16 +2,24 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import java.net.URL?>
 
 <BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.contrasenas.controller.MainMenuController">
+
+    <!-- Enlace a la hoja de estilos externa -->
+    <stylesheets>
+        <URL value="@styles.css" />
+    </stylesheets>
+
     <top>
-        <MenuBar BorderPane.alignment="CENTER">
+        <MenuBar styleClass="menu-bar" BorderPane.alignment="CENTER">
             <menus>
                 <Menu text="Opciones">
                     <items>
                         <MenuItem onAction="#handleVerUsuarios" text="Ver usuarios" />
-                        <MenuItem fx:id="menuItemEditar" onAction="#handleAgregarUsuario" text="Editar usuarios (Agregar)" />
+                        <MenuItem fx:id="menuItemEditar" onAction="#handleAgregarUsuario" text="Editar usuarios" />
                         <SeparatorMenuItem />
                         <MenuItem onAction="#handleSalir" text="Salir" />
                     </items>
@@ -19,13 +27,20 @@
             </menus>
         </MenuBar>
     </top>
+
     <center>
-        <StackPane fx:id="contentArea" style="-fx-padding: 20; -fx-background-color: #f4f4f4;">
-            <Label text="Bienvenido al Sistema de Gestión de Usuarios" textFill="#333333">
-                <font>
-                    <Font size="18.0" />
-                </font>
-            </Label>
+        <StackPane fx:id="contentArea" styleClass="content-area">
+            <VBox alignment="CENTER" spacing="15.0">
+                <!-- Título central -->
+                <Label styleClass="title-label" text="Ferretería Calderón" />
+
+                <!-- Imagen / Logotipo -->
+                <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="https://images.seeklogo.com/logo-png/40/2/cruz-azul-f-c-logo-png_seeklogo-405542.png" />
+                    </image>
+                </ImageView>
+            </VBox>
         </StackPane>
     </center>
 </BorderPane>

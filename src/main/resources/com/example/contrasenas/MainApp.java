@@ -7,13 +7,21 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/contrasenas/login-view.fxml"));
+        // Carga la vista del Login (hello-view.fxml)
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("/com/example/contrasenas/hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 450, 400);
-        stage.setTitle("Login to our site");
+
+        // Enlaza la hoja de estilos global
+        String css = MainApp.class.getResource("/com/example/contrasenas/styles.css").toExternalForm();
+        scene.getStylesheets().add(css);
+
+        // Título de la ventana principal
+        stage.setTitle("Ferretería Calderón - Control de Acceso");
         stage.setScene(scene);
+        stage.setResizable(false); // Evita que la ventana de login se deforme
         stage.show();
     }
 

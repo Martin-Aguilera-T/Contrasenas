@@ -2,51 +2,58 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
+<?import java.net.URL?>
 
-<ScrollPane fitToWidth="true" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.contrasenas.controller.RegisterController">
+<ScrollPane fitToWidth="true" styleClass="scroll-pane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.contrasenas.controller.RegisterController">
+
+    <!-- Enlace a la hoja de estilos externa -->
+    <stylesheets>
+        <URL value="@styles.css" />
+    </stylesheets>
+
     <content>
-        <VBox alignment="TOP_CENTER" spacing="12.0" style="-fx-padding: 25; -fx-background-color: #2b3e50;">
+        <VBox alignment="TOP_CENTER" spacing="15.0" styleClass="root-container">
             <children>
-                <Label text="Sign up now" textFill="WHITE">
-                    <font>
-                        <Font name="System Bold" size="20.0" />
-                    </font>
-                </Label>
-                <Label text="Fill in the form below to get instant access:" textFill="#b0bec5" />
+                <!-- Título y Subtítulo -->
+                <Label styleClass="title-label" text="Registro de Usuarios" />
+                <Label styleClass="subtitle-label" text="Complete la información para registrar o modificar un usuario" />
 
-                <GridPane hgap="10" vgap="10">
+                <!-- Formulario en Cuadrícula -->
+                <GridPane hgap="12" vgap="12">
                     <columnConstraints>
                         <ColumnConstraints percentWidth="50" />
                         <ColumnConstraints percentWidth="50" />
                     </columnConstraints>
 
                     <children>
-                        <TextField fx:id="txtUserId" promptText="User ID / Username..." GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                        <PasswordField fx:id="txtPassword" promptText="Password..." GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                        <TextField fx:id="txtUserId" promptText="ID de Usuario" styleClass="text-field" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <PasswordField fx:id="txtPassword" promptText="Contraseña" styleClass="password-field" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
-                        <TextField fx:id="txtFirstName" promptText="First Name..." GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                        <TextField fx:id="txtLastName" promptText="Last Name..." GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="txtFirstName" promptText="Nombre(s)" styleClass="text-field" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                        <TextField fx:id="txtLastName" promptText="Apellido(s)" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-                        <TextField fx:id="txtEmail" promptText="Email Address..." GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                        <ComboBox fx:id="cmbRole" promptText="Seleccionar Rol" GridPane.columnIndex="1" GridPane.rowIndex="2" prefWidth="300" />
+                        <TextField fx:id="txtEmail" promptText="Correo Electrónico" styleClass="text-field" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                        <ComboBox fx:id="cmbRole" prefWidth="300" promptText="Seleccionar Rol" styleClass="combo-box" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
-                        <TextField fx:id="txtCurp" promptText="CURP..." GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                        <TextField fx:id="txtRfc" promptText="RFC..." GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="txtCurp" promptText="CURP" styleClass="text-field" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                        <TextField fx:id="txtRfc" promptText="RFC" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 
-                        <TextField fx:id="txtSpecialty" promptText="Especialidad (Puesto)..." GridPane.columnIndex="0" GridPane.rowIndex="4" />
-                        <ComboBox fx:id="cmbStatus" promptText="Estado del Usuario" GridPane.columnIndex="1" GridPane.rowIndex="4" prefWidth="300" />
+                        <TextField fx:id="txtSpecialty" promptText="Especialidad / Puesto" styleClass="text-field" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                        <ComboBox fx:id="cmbStatus" prefWidth="300" promptText="Estado del Usuario" styleClass="combo-box" GridPane.columnIndex="1" GridPane.rowIndex="4" />
 
-                        <TextField fx:id="txtPhone" promptText="Teléfono (Datos Cifrados)..." GridPane.columnIndex="0" GridPane.rowIndex="5" />
-                        <TextField fx:id="txtAddress" promptText="Dirección (Datos Cifrados)..." GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <TextField fx:id="txtPhone" promptText="Teléfono (Encriptado AES)" styleClass="text-field" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                        <TextField fx:id="txtAddress" promptText="Dirección (Encriptada AES)" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="5" />
 
-                        <TextField fx:id="txtSalary" promptText="Sueldo (Datos Cifrados)..." GridPane.columnIndex="0" GridPane.rowIndex="6" />
-                        <TextArea fx:id="txtNotes" promptText="Notas / About yourself..." prefHeight="60" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <TextField fx:id="txtSalary" promptText="Sueldo (Encriptado AES)" styleClass="text-field" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+                        <TextArea fx:id="txtNotes" prefHeight="65" promptText="Notas u Observaciones..." styleClass="text-area" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                     </children>
                 </GridPane>
 
-                <Button onAction="#handleRegistrar" prefWidth="250.0" style="-fx-background-color: #00a8cc; -fx-text-fill: white; -fx-font-weight: bold; -fx-pref-height: 38; -fx-cursor: hand;" text="Sign me up!" />
-                <Label fx:id="lblMensaje" textFill="WHITE" />
+                <!-- Botón de Registro -->
+                <Button onAction="#handleRegistrar" prefWidth="250.0" styleClass="button-primary" text="Guardar Registro" />
+
+                <!-- Label para Mensajes / Validaciones -->
+                <Label fx:id="lblMensaje" styleClass="subtitle-label" />
             </children>
         </VBox>
     </content>
