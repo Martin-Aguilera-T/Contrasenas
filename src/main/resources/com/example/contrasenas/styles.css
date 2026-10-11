@@ -55,10 +55,10 @@
     -fx-padding: 8px;
 }
 
-.text-field:focused,
-.password-field:focused,
-.combo-box:focused,
-.text-area:focused {
+.text-field:focus,
+.password-field:focus,
+.combo-box:focus,
+.text-area:focus {
     -fx-border-color: #FFFFFF;
 }
 
@@ -109,7 +109,7 @@
     -fx-text-fill: #FFFFFF;
 }
 
-.menu-item:focused {
+.menu-item:hover {
     -fx-background-color: #333333;
 }
 
@@ -143,14 +143,6 @@
 .table-row-cell {
     -fx-background-color: #1E1E1E;
     -fx-text-fill: #FFFFFF;
-}
-
-.table-row-cell:odd {
-    -fx-background-color: #181818;
-}
-
-.table-row-cell:selected {
-    -fx-background-color: #333333;
 }
 
 .table-cell {
