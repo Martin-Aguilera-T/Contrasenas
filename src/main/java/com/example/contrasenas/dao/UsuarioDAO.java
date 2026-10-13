@@ -10,12 +10,10 @@ import java.util.List;
 
 public class UsuarioDAO {
 
-    // Validar Login (compara la contraseña usando SHA-512)
     public Usuario autenticar(String userId, String password) {
         // Genera el hash SHA-512 y lo fuerza a minúsculas
         String hash = DigestUtils.sha512Hex(password).toLowerCase();
 
-        // Compara el hash en minúsculas en la base de datos
         String sql = "select u.userId, u.role from usuarios u where u.userId = ? and lower(u.password) = ?";
 
         try (Connection conn = DatabaseConnection.getConnection();
@@ -38,7 +36,6 @@ public class UsuarioDAO {
         return null;
     }
 
-    // Insertar un nuevo usuario con SHA-512 y AES_ENCRYPT
     public boolean agregarUsuario(Usuario u) {
         String sql = "insert into usuarios (userId, firstName, lastName, emailAddress, userStatus, role, password, curp, rfc, specialty, notes, phoneEncrypted, addressEncrypted, salaryEncrypted) " +
                 "values (?, ?, ?, ?, ?, ?, sha2(?, 512), ?, ?, ?, ?, aes_encrypt(?, ?), aes_encrypt(?, ?), aes_encrypt(?, ?))";
@@ -58,7 +55,6 @@ public class UsuarioDAO {
             pstmt.setString(10, u.getSpecialty());
             pstmt.setString(11, u.getNotes());
 
-            // Teléfono, dirección y sueldo cifrados
             pstmt.setString(12, u.getPhone());
             pstmt.setString(13, DatabaseConnection.getAesKey());
             pstmt.setString(14, u.getAddress());
@@ -72,7 +68,6 @@ public class UsuarioDAO {
             return false;
         }
     }
-    // Eliminar un usuario por su userId
     public boolean eliminarUsuario(String userId) {
         String sql = "delete from usuarios where userId = ?";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -85,7 +80,6 @@ public class UsuarioDAO {
         }
     }
 
-    // Modificar datos de un usuario
     public boolean modificarUsuario(Usuario u) {
         String sql = "update usuarios set firstName = ?, lastName = ?, emailAddress = ?, userStatus = ?, role = ?, " +
                 "curp = ?, rfc = ?, specialty = ?, notes = ?, " +
@@ -120,7 +114,6 @@ public class UsuarioDAO {
         }
     }
 
-    // Consultar lista de usuarios diferenciando si es Jefe o Empleado
     public List<Usuario> listarUsuarios(boolean esJefe) {
         List<Usuario> lista = new ArrayList<>();
         String sql;

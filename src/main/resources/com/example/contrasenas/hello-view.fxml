@@ -6,24 +6,19 @@
 
 <VBox alignment="CENTER" spacing="15.0" styleClass="root-container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.contrasenas.controller.LoginController">
 
-    <!-- Enlace a la hoja de estilos externa -->
     <stylesheets>
         <URL value="@styles.css" />
     </stylesheets>
 
     <children>
-        <!-- Título y Subtítulo -->
         <Label styleClass="title-label" text="Inicio de Sesión" />
         <Label styleClass="subtitle-label" text="Ingresa tu usuario y contraseña" />
 
-        <!-- Campos de Texto -->
         <TextField fx:id="txtUsername" promptText="Usuario" styleClass="text-field" />
         <PasswordField fx:id="txtPassword" promptText="Contraseña" styleClass="password-field" />
 
-        <!-- Botón de Iniciar Sesión -->
         <Button fx:id="btnLogin" onAction="#handleLogin" prefWidth="250.0" styleClass="button-primary" text="Iniciar Sesión" />
 
-        <!-- Mensaje de Error -->
         <Label fx:id="lblError" styleClass="error-label" />
     </children>
 </VBox>

@@ -6,7 +6,6 @@
 
 <ScrollPane fitToWidth="true" styleClass="scroll-pane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.contrasenas.controller.RegisterController">
 
-    <!-- Enlace a la hoja de estilos externa -->
     <stylesheets>
         <URL value="@styles.css" />
     </stylesheets>
@@ -14,11 +13,9 @@
     <content>
         <VBox alignment="TOP_CENTER" spacing="15.0" styleClass="root-container">
             <children>
-                <!-- Título y Subtítulo -->
                 <Label styleClass="title-label" text="Registro de Usuarios" />
                 <Label styleClass="subtitle-label" text="Complete la información para registrar o modificar un usuario" />
 
-                <!-- Formulario en Cuadrícula -->
                 <GridPane hgap="12" vgap="12">
                     <columnConstraints>
                         <ColumnConstraints percentWidth="50" />
@@ -49,10 +46,8 @@
                     </children>
                 </GridPane>
 
-                <!-- Botón de Registro -->
                 <Button onAction="#handleRegistrar" prefWidth="250.0" styleClass="button-primary" text="Guardar Registro" />
 
-                <!-- Label para Mensajes / Validaciones -->
                 <Label fx:id="lblMensaje" styleClass="subtitle-label" />
             </children>
         </VBox>

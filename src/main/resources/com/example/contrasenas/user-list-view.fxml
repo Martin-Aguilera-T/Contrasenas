@@ -6,16 +6,13 @@
 
 <VBox spacing="15.0" styleClass="root-container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.contrasenas.controller.UserListController">
 
-    <!-- Enlace a la hoja de estilos externa -->
     <stylesheets>
         <URL value="@styles.css" />
     </stylesheets>
 
     <children>
-        <!-- Título principal -->
         <Label styleClass="title-label" text="Lista de Usuarios Registrados" />
 
-        <!-- Tabla de usuarios -->
         <TableView fx:id="tblUsuarios" prefHeight="450.0" prefWidth="850.0" styleClass="table-view">
             <columns>
                 <TableColumn fx:id="colUserId" prefWidth="90.0" text="ID USUARIO" />

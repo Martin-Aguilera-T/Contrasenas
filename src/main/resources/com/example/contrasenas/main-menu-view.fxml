@@ -8,7 +8,6 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.contrasenas.controller.MainMenuController">
 
-    <!-- Enlace a la hoja de estilos externa -->
     <stylesheets>
         <URL value="@styles.css" />
     </stylesheets>
@@ -31,10 +30,8 @@
     <center>
         <StackPane fx:id="contentArea" styleClass="content-area">
             <VBox alignment="CENTER" spacing="15.0">
-                <!-- Título central -->
                 <Label styleClass="title-label" text="Ferretería Calderón" />
 
-                <!-- Imagen / Logotipo -->
                 <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="https://images.seeklogo.com/logo-png/40/2/cruz-azul-f-c-logo-png_seeklogo-405542.png" />
