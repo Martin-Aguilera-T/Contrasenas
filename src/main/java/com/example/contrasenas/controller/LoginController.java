@@ -26,7 +26,7 @@ public class LoginController {
         String pass = txtPassword.getText().trim();
 
         if (user.isEmpty() || pass.isEmpty()) {
-            lblError.setText("Por favor llena todos los campos.");
+            lblError.setText("Campos vacios.");
             return;
         }
 
@@ -42,7 +42,7 @@ public class LoginController {
 
                 Stage stage = (Stage) txtUsername.getScene().getWindow();
                 stage.setScene(new Scene(root, 900, 600));
-                stage.setTitle("Ferretería - Menú Principal");
+                stage.setTitle("Menu");
             } catch (IOException e) {
                 e.printStackTrace();
             }

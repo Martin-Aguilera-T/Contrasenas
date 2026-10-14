@@ -125,7 +125,7 @@ public class UsuarioDAO {
                     "cast(aes_decrypt(u.salaryEncrypted, ?) as char) as salary from usuarios u";
         } else {
             sql = "select u.userId, u.firstName, u.lastName, u.emailAddress, u.userStatus, u.role, u.createdDate, u.curp, u.rfc, u.specialty, u.notes, " +
-                    "'*** OCULTO ***' as phone, '*** OCULTO ***' as address, '*** OCULTO ***' as salary from usuarios u";
+                    "'***' as phone, '***' as address, '***' as salary from usuarios u";
         }
 
         try (Connection conn = DatabaseConnection.getConnection();

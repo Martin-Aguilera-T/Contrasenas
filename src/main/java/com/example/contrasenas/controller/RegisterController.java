@@ -31,7 +31,7 @@ public class RegisterController {
                 txtFirstName.getText().isBlank() || txtLastName.getText().isBlank() ||
                 txtEmail.getText().isBlank()) {
 
-            lblMensaje.setText("Por favor llena los campos requeridos.");
+            lblMensaje.setText("Llena todos los campos.");
             lblMensaje.setStyle("-fx-text-fill: #ff5252;");
             return;
         }
@@ -53,11 +53,11 @@ public class RegisterController {
         u.setSalary(txtSalary.getText().trim());
 
         if (usuarioDAO.agregarUsuario(u)) {
-            lblMensaje.setText("¡Usuario registrado con éxito!");
+            lblMensaje.setText("Usuario Registrado");
             lblMensaje.setStyle("-fx-text-fill: #4caf50;");
             limpiarCampos();
         } else {
-            lblMensaje.setText("Error al registrar usuario en Azure.");
+            lblMensaje.setText("Error al registrar el usuario");
             lblMensaje.setStyle("-fx-text-fill: #ff5252;");
         }
     }
@@ -70,21 +70,21 @@ public class RegisterController {
     }
     private boolean validarCampos() {
         if (!txtEmail.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
-            lblMensaje.setText("El formato del correo es inválido.");
+            lblMensaje.setText("Correo invalido.");
             return false;
         }
         if (!txtPhone.getText().matches("\\d{10}")) {
-            lblMensaje.setText("El teléfono debe contener exactamente 10 dígitos.");
+            lblMensaje.setText("Telefono Invalido.");
             return false;
         }
         try {
             Double.parseDouble(txtSalary.getText());
         } catch (NumberFormatException e) {
-            lblMensaje.setText("El sueldo debe ser un valor numérico.");
+            lblMensaje.setText("Sueldo  Invalido.");
             return false;
         }
         if (txtUserId.getText().length() > 50) {
-            lblMensaje.setText("El User ID no puede exceder los 50 caracteres.");
+            lblMensaje.setText("UserId invalido.");
             return false;
         }
         return true;

@@ -21,7 +21,6 @@ public class MainMenuController {
     public void setUsuarioLogueado(Usuario usuario) {
         this.usuarioLogueado = usuario;
 
-        // Si es Empleado, deshabilita la opción de Agregar/Editar
         if ("Empleado".equalsIgnoreCase(usuario.getRole())) {
             menuItemEditar.setDisable(true);
         }

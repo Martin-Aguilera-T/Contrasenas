@@ -14,7 +14,6 @@
         <VBox alignment="TOP_CENTER" spacing="15.0" styleClass="root-container">
             <children>
                 <Label styleClass="title-label" text="Registro de Usuarios" />
-                <Label styleClass="subtitle-label" text="Complete la información para registrar o modificar un usuario" />
 
                 <GridPane hgap="12" vgap="12">
                     <columnConstraints>
@@ -35,13 +34,13 @@
                         <TextField fx:id="txtCurp" promptText="CURP" styleClass="text-field" GridPane.columnIndex="0" GridPane.rowIndex="3" />
                         <TextField fx:id="txtRfc" promptText="RFC" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 
-                        <TextField fx:id="txtSpecialty" promptText="Especialidad / Puesto" styleClass="text-field" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                        <TextField fx:id="txtSpecialty" promptText="Especialidad" styleClass="text-field" GridPane.columnIndex="0" GridPane.rowIndex="4" />
                         <ComboBox fx:id="cmbStatus" prefWidth="300" promptText="Estado del Usuario" styleClass="combo-box" GridPane.columnIndex="1" GridPane.rowIndex="4" />
 
-                        <TextField fx:id="txtPhone" promptText="Teléfono (Encriptado AES)" styleClass="text-field" GridPane.columnIndex="0" GridPane.rowIndex="5" />
-                        <TextField fx:id="txtAddress" promptText="Dirección (Encriptada AES)" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <TextField fx:id="txtPhone" promptText="Teléfono" styleClass="text-field" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                        <TextField fx:id="txtAddress" promptText="Dirección" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="5" />
 
-                        <TextField fx:id="txtSalary" promptText="Sueldo (Encriptado AES)" styleClass="text-field" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+                        <TextField fx:id="txtSalary" promptText="Sueldo" styleClass="text-field" GridPane.columnIndex="0" GridPane.rowIndex="6" />
                         <TextArea fx:id="txtNotes" prefHeight="65" promptText="Notas u Observaciones..." styleClass="text-area" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                     </children>
                 </GridPane>
