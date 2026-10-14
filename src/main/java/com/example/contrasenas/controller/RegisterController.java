@@ -13,16 +13,42 @@ public class RegisterController {
     @FXML private TextArea txtNotes;
     @FXML private ComboBox<String> cmbRole, cmbStatus;
     @FXML private Label lblMensaje;
+    @FXML private Button btnGuardar;
 
     private UsuarioDAO usuarioDAO = new UsuarioDAO();
+    private boolean esModificacion = false;
 
     @FXML
     public void initialize() {
-        cmbRole.getItems().addAll("Jefe", "Empleado");
+        cmbRole.getItems().setAll("Jefe", "Empleado");
         cmbRole.getSelectionModel().selectFirst();
 
-        cmbStatus.getItems().addAll("Active", "Inactive");
+        cmbStatus.getItems().setAll("Active", "Inactive");
         cmbStatus.getSelectionModel().selectFirst();
+    }
+    public void cargarDatosParaModificar(Usuario usuario) {
+        if (usuario == null) return;
+
+        esModificacion = true;
+        txtUserId.setText(usuario.getUserId());
+        txtUserId.setEditable(false);
+
+        txtFirstName.setText(usuario.getFirstName());
+        txtLastName.setText(usuario.getLastName());
+        txtEmail.setText(usuario.getEmailAddress());
+        cmbRole.setValue(usuario.getRole());
+        txtCurp.setText(usuario.getCurp());
+        txtRfc.setText(usuario.getRfc());
+        txtSpecialty.setText(usuario.getSpecialty());
+        cmbStatus.setValue(usuario.getUserStatus());
+        txtPhone.setText(usuario.getPhone());
+        txtAddress.setText(usuario.getAddress());
+        txtSalary.setText(usuario.getSalary());
+        txtNotes.setText(usuario.getNotes());
+
+        if (btnGuardar != null) {
+            btnGuardar.setText("ACTUALIZAR REGISTRO");
+        }
     }
 
     @FXML
@@ -32,7 +58,12 @@ public class RegisterController {
                 txtEmail.getText().isBlank()) {
 
             lblMensaje.setText("Llena todos los campos.");
-            lblMensaje.setStyle("-fx-text-fill: #ff5252;");
+            lblMensaje.getStyleClass().setAll("error-label");
+            return;
+        }
+
+        if (!validarCampos()) {
+            lblMensaje.getStyleClass().setAll("error-label");
             return;
         }
 
@@ -52,39 +83,54 @@ public class RegisterController {
         u.setAddress(txtAddress.getText().trim());
         u.setSalary(txtSalary.getText().trim());
 
-        if (usuarioDAO.agregarUsuario(u)) {
-            lblMensaje.setText("Usuario Registrado");
-            lblMensaje.setStyle("-fx-text-fill: #4caf50;");
+        boolean resultado;
+        if (esModificacion) {
+            resultado = usuarioDAO.modificarUsuario(u);
+        } else {
+            resultado = usuarioDAO.agregarUsuario(u);
+        }
+
+        if (resultado) {
+            lblMensaje.setText(esModificacion ? "Usuario Actualizado Correctamente" : "Usuario Registrado Correctamente");
+            lblMensaje.getStyleClass().setAll("subtitle-label");
             limpiarCampos();
         } else {
-            lblMensaje.setText("Error al registrar el usuario");
-            lblMensaje.setStyle("-fx-text-fill: #ff5252;");
+            lblMensaje.setText("Error al guardar en la base de datos");
+            lblMensaje.getStyleClass().setAll("error-label");
         }
     }
 
     private void limpiarCampos() {
-        txtUserId.clear(); txtPassword.clear(); txtFirstName.clear();
+        txtUserId.clear(); txtUserId.setEditable(true);
+        txtPassword.clear(); txtFirstName.clear();
         txtLastName.clear(); txtEmail.clear(); txtCurp.clear();
         txtRfc.clear(); txtSpecialty.clear(); txtPhone.clear();
         txtAddress.clear(); txtSalary.clear(); txtNotes.clear();
+        esModificacion = false;
+        if (btnGuardar != null) {
+            btnGuardar.setText("Guardar Registro");
+        }
     }
+
     private boolean validarCampos() {
         if (!txtEmail.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
-            lblMensaje.setText("Correo invalido.");
+            lblMensaje.setText("Correo inválido.");
             return false;
         }
-        if (!txtPhone.getText().matches("\\d{10}")) {
-            lblMensaje.setText("Telefono Invalido.");
+        if (!txtPhone.getText().isEmpty() && !txtPhone.getText().matches("\\d{10}")) {
+            lblMensaje.setText("Teléfono inválido (debe tener 10 dígitos).");
             return false;
         }
-        try {
-            Double.parseDouble(txtSalary.getText());
-        } catch (NumberFormatException e) {
-            lblMensaje.setText("Sueldo  Invalido.");
-            return false;
+        if (!txtSalary.getText().isEmpty()) {
+            try {
+                Double.parseDouble(txtSalary.getText());
+            } catch (NumberFormatException e) {
+                lblMensaje.setText("Sueldo inválido.");
+                return false;
+            }
         }
         if (txtUserId.getText().length() > 50) {
-            lblMensaje.setText("UserId invalido.");
+            lblMensaje.setText("UserId inválido (máximo 50 caracteres).");
             return false;
         }
         return true;

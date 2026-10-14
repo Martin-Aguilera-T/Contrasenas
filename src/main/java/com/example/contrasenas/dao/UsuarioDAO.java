@@ -9,9 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UsuarioDAO {
-
     public Usuario autenticar(String userId, String password) {
-        // Genera el hash SHA-512 y lo fuerza a minúsculas
         String hash = DigestUtils.sha512Hex(password).toLowerCase();
 
         String sql = "select u.userId, u.role from usuarios u where u.userId = ? and lower(u.password) = ?";
@@ -68,6 +66,7 @@ public class UsuarioDAO {
             return false;
         }
     }
+
     public boolean eliminarUsuario(String userId) {
         String sql = "delete from usuarios where userId = ?";
         try (Connection conn = DatabaseConnection.getConnection();

@@ -8,16 +8,16 @@ public class Usuario {
     private String lastName;
     private String emailAddress;
     private String userStatus;
-    private String role; // 'Jefe' o 'Empleado'
+    private String role;
     private Timestamp createdDate;
     private String password;
     private String curp;
     private String rfc;
     private String specialty;
     private String notes;
-    private String phone;   // Cifrado en BD (phoneEncrypted)
-    private String address; // Cifrado en BD (addressEncrypted)
-    private String salary;  // Cifrado en BD (salaryEncrypted)
+    private String phone;
+    private String address;
+    private String salary;
 
     public Usuario() {}
 
@@ -40,7 +40,6 @@ public class Usuario {
         this.salary = salary;
     }
 
-    // Getters y Setters
     public String getUserId() { return userId; }
     public void setUserId(String userId) { this.userId = userId; }
 

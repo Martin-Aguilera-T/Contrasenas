@@ -18,7 +18,7 @@
                 <Menu text="Opciones">
                     <items>
                         <MenuItem onAction="#handleVerUsuarios" text="Ver usuarios" />
-                        <MenuItem fx:id="menuItemEditar" onAction="#handleAgregarUsuario" text="Editar usuarios" />
+                        <MenuItem fx:id="menuItemEditar" onAction="#handleAgregarUsuario" text="Nuevo usuario" />
                         <SeparatorMenuItem />
                         <MenuItem onAction="#handleSalir" text="Salir" />
                     </items>

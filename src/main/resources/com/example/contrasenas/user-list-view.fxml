@@ -13,7 +13,7 @@
     <children>
         <Label styleClass="title-label" text="Lista de Usuarios Registrados" />
 
-        <TableView fx:id="tblUsuarios" prefHeight="450.0" prefWidth="850.0" styleClass="table-view">
+        <TableView fx:id="tblUsuarios" prefHeight="390.0" prefWidth="850.0" styleClass="table-view">
             <columns>
                 <TableColumn fx:id="colUserId" prefWidth="90.0" text="ID USUARIO" />
                 <TableColumn fx:id="colFirstName" prefWidth="110.0" text="NOMBRE" />
@@ -27,5 +27,10 @@
                 <TableColumn fx:id="colSalary" prefWidth="90.0" text="SUELDO" />
             </columns>
         </TableView>
+
+        <HBox alignment="CENTER_RIGHT" spacing="12.0">
+            <Button onAction="#handleModificarSeleccionado" styleClass="button-primary" text="Modificar Usuario" />
+            <Button onAction="#handleEliminarSeleccionado" styleClass="button-primary" text="Eliminar Usuario" />
+        </HBox>
     </children>
 </VBox>
